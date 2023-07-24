@@ -1,0 +1,20 @@
+{
+  "name": "ln-over-wg-server",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "boltwall": "^6.0.4",
+    "cors": "^2.8.5",
+    "debug": "~2.6.9",
+    "dotenv": "^16.3.1",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "lnd-grpc": "^0.5.4",
+    "morgan": "~1.9.1",
+    "request-ip": "^3.3.0",
+    "wireguard-tools": "^0.1.0"
+  }
+}

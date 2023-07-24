@@ -1,0 +1,5 @@
+/volumes
+*/node_modules
+*/.env
+/client/lnd_bob
+/server/lnd_alice

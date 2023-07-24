@@ -1,0 +1,19 @@
+{
+  "name": "ln-over-wg-client",
+  "version": "1.0.0",
+  "description": "",
+  "main": "setup.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bech32": "^2.0.0",
+    "dotenv": "^16.3.1",
+    "lnd-grpc": "^0.5.4",
+    "lsat-js": "^2.0.6",
+    "node-fetch": "^2.6.1",
+    "wireguard-tools": "^0.1.0"
+  }
+}
