@@ -1,11 +1,10 @@
 var express = require('express');
 var path = require('path');
 var logger = require('morgan');
-
-var protectedRouter = require('./routes/protected');
 const cors = require('cors')
 require('dotenv').config()
 const LndGrpc = require('lnd-grpc') // wrapper for Lnd gRPC API
+var protectedRouter = require('./routes/protected');
 const { boltwall, TIME_CAVEAT_CONFIGS, ORIGIN_CAVEAT_CONFIGS } = require('boltwall')
 const { Lsat } = require('lsat-js');
 
@@ -42,8 +41,6 @@ async function startup() {
   await wgLightning.save(); // write file and start interface
 }
 
-const payment_hashes = new Map();
-
 startup().then(() => {
   console.log('Interface wgLightning created.')
 }).catch(err => {
@@ -51,12 +48,14 @@ startup().then(() => {
   console.log(err)
 });
 
-
 app.use('/index', function(req, res, next) {
   res.json('Hello world');
 });
 
 app.use(boltwall({...ORIGIN_CAVEAT_CONFIGS, ...TIME_CAVEAT_CONFIGS}));
+
+// Tracks authorized payment_hashes to ensure 1-time token use 
+const payment_hashes = new Map();
 app.use((req, resp, next) => {
   const lsat = Lsat.fromToken(req.headers.authorization);
   if (payment_hashes.get(lsat.paymentHash)) {
@@ -66,7 +65,8 @@ app.use((req, resp, next) => {
     next();
   }
 });
-app.use('/testprotected', (req, resp) => resp.send("Accessed protected"));
+
+app.use('/testprotected', (req, resp) => resp.send("Accessed protected area"));
 app.use('/protected', protectedRouter);
 
 module.exports = app;
