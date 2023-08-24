@@ -3,7 +3,7 @@ Use lightning payments to facilitate a Wireguard tunnel between client and serve
 
 ## Code overview
 
-![LN-over-wg-poc](https://github.com/brh28/lightning-over-wireguard/assets/31115595/35e8d05c-731d-48c1-9a55-5f05531d1790)
+![LN-over-wg-poc](https://github.com/brh28/lightning-over-wireguard/assets/31115595/3ebeacbb-c9e7-4b4a-96d8-494756c3d891)
 
 This repository contains two components: the ln-over-wg-client and the ln-over-wg-server.
 
